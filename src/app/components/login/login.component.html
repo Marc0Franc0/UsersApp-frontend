@@ -1,0 +1,36 @@
+ <div class="container-fluid container-login">
+  <div class="row align-items-center  vh-100">
+    <div class="col-7 mx-auto ">
+      <div class="card ">
+        <div class="card-body">
+
+          <form (ngSubmit)="logIn()">
+            <div class="mb-3">
+              <input type="email" class="form-control" [(ngModel)]="this.user.email" id="inputEmail"
+               aria-describedby="emailHelp" name="email" placeholder="Correo electrónico" >
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control"
+              placeholder="Contraseña" name="password"  [(ngModel)]="this.user.password" id="inputPassword" >
+            </div>
+            <div class=" d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </div>
+
+          </form>
+          <hr>
+          <div class="text-center">
+            <button class="btn btn-success text-center">Crear nueva cuenta</button>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+</div>
+
+

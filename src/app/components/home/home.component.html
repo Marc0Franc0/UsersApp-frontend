@@ -1,35 +1,17 @@
-<div class="table-responsive">
 
-  <table class="table">
-    <caption>List of contacts</caption>
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Full name</th>
-        <th scope="col">Birthdate</th>
-        <th scope="col">Email</th>
-        <th scope="col">Cell phone</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let contact of this.contacts ; let i  = index">
-      <tr>
-        <th scope="row">{{i+1}}</th>
-        <td>{{contact.full_name}}</td>
-        <td>{{contact.birthdate}}</td>
-        <td>{{contact.email}}</td>
-        <td>{{contact.cell_phone}}</td>
-        <td><app-boton (click)="modifyContact()" [txtButton]="'Editar'" data-bs-toggle="modal" data-bs-target="#formModifyContact"></app-boton></td>
-      </tr>
-    </tbody>
-
-  </table>
-
-
+<header class="text-center mt-5">
+  <h1>Contactos</h1>
+</header>
+<div class="container border mt-5">
+  <app-boton  [txtButton]="'Nuevo contacto'"
+  (click)="newContact()" data-bs-toggle="modal" data-bs-target="#formNewContact"></app-boton>
+</div>
+<div class="container border mt-2">
+  <app-lista-contactos></app-lista-contactos>
 </div>
 
 
-<div class="modal fade" id="formModifyContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formNewContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -55,4 +37,3 @@
     </div>
   </div>
 </div>
-

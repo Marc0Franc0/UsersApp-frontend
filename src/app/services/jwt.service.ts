@@ -9,6 +9,6 @@ export class JwtService {
 
   getToken(){
 
-    localStorage.getItem('Token');
+   return localStorage.getItem('token');
   }
 }
