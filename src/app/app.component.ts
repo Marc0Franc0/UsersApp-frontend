@@ -1,3 +1,4 @@
+import { Contact } from './models/Contact';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Contactos-frontend';
+
+  newContact(){
+    console.log("crear")
+  }
 }
