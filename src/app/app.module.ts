@@ -8,9 +8,11 @@ import { BotonComponent } from './components/boton/boton.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './modules/app-routing.module';
 import { JwtInterceptorInterceptor } from './Interceptors/jwt-interceptor.interceptor';
+import { FormNewContactComponent } from './components/form-new-contact/form-new-contact.component';
+import { FormModifyContactComponent } from './components/form-modify-contact/form-modify-contact.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,16 @@ import { JwtInterceptorInterceptor } from './Interceptors/jwt-interceptor.interc
     BotonComponent,
     LoginComponent,
     HomeComponent,
+    FormNewContactComponent,
+    FormModifyContactComponent,
+
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

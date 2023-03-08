@@ -7,5 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class BotonComponent {
   @Input() txtButton?: string;
-
 }

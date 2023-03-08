@@ -4,22 +4,21 @@
     <caption>List of contacts</caption>
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Full name</th>
-        <th scope="col">Birthdate</th>
-        <th scope="col">Email</th>
-        <th scope="col">Cell phone</th>
+        <th scope="col">Nombre completo</th>
+        <th scope="col">Fecha de nacimiento</th>
+        <th scope="col">Correo electrónico</th>
+        <th scope="col">Celular</th>
         <th></th>
       </tr>
     </thead>
-    <tbody *ngFor="let contact of this.contacts ; let i  = index">
+    <tbody *ngFor="let contact of this.contacts">
       <tr>
-        <th scope="row">{{i+1}}</th>
         <td>{{contact.full_name}}</td>
         <td>{{contact.birthdate}}</td>
         <td>{{contact.email}}</td>
         <td>{{contact.cell_phone}}</td>
-        <td><app-boton (click)="modifyContact()" [txtButton]="'Editar'" data-bs-toggle="modal" data-bs-target="#formModifyContact"></app-boton></td>
+        <td><app-boton (click)="inicializarContacto(contact.id)" [txtButton]="'Editar'" [class]="'btn btn-warning'"
+          data-bs-toggle="modal" data-bs-target="#formModifyContact"></app-boton></td>
       </tr>
     </tbody>
 
@@ -30,27 +29,14 @@
 
 
 <div class="modal fade" id="formModifyContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo contacto</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar contacto</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+       <app-form-modify-contact [contactStored]="contactStored" [idContactStored]="idContactStored!"></app-form-modify-contact>
       </div>
     </div>
   </div>

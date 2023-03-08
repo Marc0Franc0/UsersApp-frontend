@@ -16,7 +16,16 @@ export class ApiService {
   getAllContacts(): Observable<Contact[]> {
    return this.http.get<Contact[]>(`${this.pathBackend}/contacts/`);
   }
+  getContact(id:number): Observable<Contact> {
+    return this.http.get<Contact>(`${this.pathBackend}/contacts/`+id);
+   }
   authenticate(auth:AuthenticationRequest){
     return this.http.post(`${this.pathBackend}/api/auth/authenticate`,auth);
+   }
+   newContact(contact:Contact){
+    return this.http.post(`${this.pathBackend}/contacts/new`,contact,{responseType:'text'});
+   }
+   modifycontact(id:number,contact:Contact){
+    return this.http.put(`${this.pathBackend}/contacts/`+id,contact,{responseType:'text'});
    }
 }
