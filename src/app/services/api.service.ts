@@ -38,4 +38,8 @@ export class ApiService {
    getEmail(){
     return localStorage.getItem('Email');
    }
+
+   createUserAdmin(){
+    return this.http.get(`${this.pathBackend}/api/auth/createadmin`);
+   }
 }

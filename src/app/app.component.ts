@@ -1,3 +1,4 @@
+import { ApiService } from 'src/app/services/api.service';
 import { User } from './models/User';
 import { Component } from '@angular/core';
 
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Contactos-frontend';
-
-
+constructor(private api:ApiService){}
+ngOnInit(){
+  this.api.createUserAdmin().subscribe();
+}
 }
