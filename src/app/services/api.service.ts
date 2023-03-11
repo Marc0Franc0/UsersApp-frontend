@@ -1,9 +1,10 @@
+import { RegisterRequest } from './../models/RegisterRequest';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthenticationResponse } from '../models/AuthenticationReponse';
 import { AuthenticationRequest } from '../models/AuthenticationRequest';
-import { Contact } from '../models/Contact';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +14,28 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   pathBackend='http://localhost:8080'
-  getAllContacts(): Observable<Contact[]> {
-   return this.http.get<Contact[]>(`${this.pathBackend}/contacts/`);
+  getAllContacts(): Observable<User[]> {
+   return this.http.get<User[]>(`${this.pathBackend}/`);
   }
-  getContact(id:number): Observable<Contact> {
-    return this.http.get<Contact>(`${this.pathBackend}/contacts/`+id);
+  getUser(id:number): Observable<User> {
+    return this.http.get<User>(`${this.pathBackend}/`+id);
    }
   authenticate(auth:AuthenticationRequest){
     return this.http.post(`${this.pathBackend}/api/auth/authenticate`,auth);
    }
-   newContact(contact:Contact){
-    return this.http.post(`${this.pathBackend}/contacts/new`,contact,{responseType:'text'});
+   newUser(user:RegisterRequest){
+    return this.http.post(`${this.pathBackend}/api/auth/register`,user);
    }
-   modifycontact(id:number,contact:Contact){
-    return this.http.put(`${this.pathBackend}/contacts/`+id,contact,{responseType:'text'});
+
+   modifyUser(id:number,contact:User){
+    return this.http.put(`${this.pathBackend}/`+id,contact,{responseType:'text'});
+   }
+
+   isAdmin(email:string){
+    return this.http.get(`${this.pathBackend}/rol/`+email);
+   }
+
+   getEmail(){
+    return localStorage.getItem('Email');
    }
 }

@@ -14,7 +14,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   jwt: string = '';
 
-  constructor(private api: ApiService, private router: Router, private jwtService:JwtService) {}
+  constructor(
+    private api: ApiService,
+    private router: Router,
+    private jwtService: JwtService
+  ) {}
 
   user: AuthenticationRequest = {
     email: '',
@@ -27,20 +31,26 @@ export class LoginComponent {
         this.jwt = response.token;
 
         this.saveToken(response.token);
-
+        this.saveEmail(this.user.email);
         this, this.router.navigate(['home']);
-      },
-      (error) => console.log('Ocurrio un error')
-    );
+      },(error) => alert("Error al iniciar sesión"));
   }
 
-  saveToken(token:string){
-    if(this.jwtService.getToken()){
+  saveToken(token: string) {
+    if (this.jwtService.getToken()) {
       localStorage.removeItem('token');
-      localStorage.setItem('token',token);
-    }else{
+      localStorage.setItem('token', token);
+    } else {
       localStorage.setItem('token', token);
     }
+  }
 
+  saveEmail(email: string) {
+    if (this.api.getEmail()) {
+      localStorage.removeItem('Email');
+      localStorage.setItem('Email', email);
+    } else {
+      localStorage.setItem('Email', email);
+    }
   }
 }

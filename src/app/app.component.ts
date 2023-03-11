@@ -1,4 +1,4 @@
-import { Contact } from './models/Contact';
+import { User } from './models/User';
 import { Component } from '@angular/core';
 
 @Component({

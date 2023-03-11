@@ -1,21 +1,21 @@
 <div class=" container-home vh-100">
   <nav>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
  <app-boton [class]="'btn btn-danger me-md-2 mt-2'" (click)="logOut()" [txtButton]="'Cerrar sesión'"></app-boton>
     </div>
 
   </nav>
   <header>
         <div class="text-center ">
-          <h1>Contactos</h1>
+          <h1>Usuarios registrados</h1>
         </div>
   </header>
-  <div class="container  mt-5">
-    <app-boton [class]="'btn btn-success'" [txtButton]="'Nuevo contacto'" data-bs-toggle="modal"
+  <div class="container  mt-5" *ngIf="admin">
+    <app-boton [class]="'btn btn-success'" [txtButton]="'Nuevo usuario'" data-bs-toggle="modal"
       data-bs-target="#formNewContact"></app-boton>
   </div>
-  <div class="container  mt-2">
-    <app-lista-contactos></app-lista-contactos>
+  <div class="container  mt-5 ">
+   <app-lista-users></app-lista-users>
   </div>
 
 
@@ -23,13 +23,16 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo contacto</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo usuario</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <app-form-new-contact></app-form-new-contact>
+          <app-form-new-user></app-form-new-user>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+

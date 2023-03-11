@@ -20,7 +20,8 @@
           </form>
           <hr>
           <div class="text-center">
-            <button class="btn btn-success text-center">Crear nueva cuenta</button>
+            <app-boton [class]="'btn btn-success text-center'" txtButton="Crear nueva cuenta" data-bs-toggle="modal"
+            data-bs-target="#formNewContact"></app-boton>
           </div>
 
         </div>
@@ -32,5 +33,22 @@
 
 
 </div>
+
+
+
+<div class="modal fade " id="formNewContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-form-new-user></app-form-new-user>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 

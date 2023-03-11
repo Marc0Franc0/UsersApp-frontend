@@ -1,0 +1,28 @@
+<div>
+  <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <input type="text" class="form-control" name="firstname" formControlName="firstname"
+      placeholder= "{{userStored?.firstname}}">
+      <div class="alert alert-danger mt-2" [hidden]="firstname?.valid || firstname?.pristine"     >El nombre es
+  obligatorio</div>
+
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" name="lastname"
+      placeholder="{{userStored?.lastname}}"
+        formControlName="lastname" >
+      <div class="alert alert-danger mt-2" [hidden]="lastname?.valid || lastname?.pristine">La fecha de
+        nacimiento es obligatoria</div>
+    </div>
+    <div class="mb-3">
+      <input type="email" class="form-control" name="email" placeholder="Correo electrónico" formControlName="email"
+
+      placeholder= "{{userStored?.email}}">
+      <div class="alert alert-danger mt-2" [hidden]="email?.valid || email?.pristine">El correo electrónico es
+        obligatorio</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="formUser.invalid">Guardar</button>
+  </form>
+
+</div>

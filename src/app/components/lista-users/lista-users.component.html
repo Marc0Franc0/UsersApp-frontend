@@ -1,0 +1,45 @@
+<div class="table-responsive">
+
+  <table class="table">
+    <caption>List of contacts</caption>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre/s</th>
+        <th scope="col">Apellido/s</th>
+        <th scope="col">Email</th>
+        <th *ngIf="this.admin==true" scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of this.users">
+      <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.email}}</td>
+        <td *ngIf="this.admin==true"><app-boton [ngClass]="'btn btn-warning'"
+          data-bs-toggle="modal"
+        data-bs-target="#formModifyContact"
+        (click)="inicializarUser(user.id)" txtButton="Editar"></app-boton></td>
+
+      </tr>
+    </tbody>
+
+  </table>
+
+
+</div>
+
+<div class="modal fade" id="formModifyContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel" >Editar usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <app-form-modify-user [userStored]="userStored" [idUserStored]="idUserStored!"></app-form-modify-user>
+      </div>
+    </div>
+  </div>
+</div>
