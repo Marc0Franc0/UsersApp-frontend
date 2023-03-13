@@ -13,7 +13,7 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  pathBackend='http://localhost:8080'
+  pathBackend='https://service-users-app.onrender.com'
   getAllContacts(): Observable<User[]> {
    return this.http.get<User[]>(`${this.pathBackend}/`);
   }

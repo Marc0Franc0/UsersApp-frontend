@@ -12,6 +12,7 @@ import { JwtInterceptorInterceptor } from './Interceptors/jwt-interceptor.interc
 import { ListaUsersComponent } from './components/lista-users/lista-users.component';
 import { FormNewUserComponent } from './form-new-user/form-new-user.component';
 import { FormModifyUserComponent } from './components/form-modify-user/form-modify-user.component';
+import { UserGuardGuard } from './guards/user-guard.guard';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ FormModifyUserComponent
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptorInterceptor,
       multi: true,
-    },
+    },UserGuardGuard
   ],
   bootstrap: [AppComponent],
 })
